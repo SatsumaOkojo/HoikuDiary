@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->char('message')
+            $table->unsignedBigInteger('facility_id');
+            $table->unsignedBigInteger('user_id');
+            $table->char('message');
+            $table->softDeletes('delete_at');
             $table->timestamps();
         });
     }

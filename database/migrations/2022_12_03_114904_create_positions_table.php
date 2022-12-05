@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->string('position_name');
-            $table->increments('author_id');
+            $table->integer('author_id');
+            $table->softDeletes('delete_at');
             $table->timestamps();
         });
     }

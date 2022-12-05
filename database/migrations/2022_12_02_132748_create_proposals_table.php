@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->string('event_name')
-            $table->date('schedule')
-            $table->BLOB(M)('image')
+            $table->string('event_name');
+            $table->date('schedule');
+            $table->string('proposal_image_path');
+            $table->softDeletes('delete_at');
             $table->timestamps();
         });
     }

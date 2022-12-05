@@ -17,11 +17,22 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+
     protected $fillable = [
+        'facility_id',
+        'position_id',
         'name',
-        'email',
+        'mail',
         'password',
+        'icon_image_path',
+        'delete_at',
     ];
+
+    
+   
+   
+        protected $guarded = ['created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +52,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+// 園テーブルと紐づけ？
+    public function facility()
+    {
+         return $this->belongsTo('App\Models\facility');
+    }
 }

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proposal extends Model
 {
-    protected $table = 'prposals';
+    protected $table = 'proposals';
 // user id
-    protected $fillable = ['event_name', 'schedule', 'image']
+    protected $fillable = ['event_name', 'schedule', 'proposal_image_path', 'delete_at'];
 
-    protected $guarded = ['created_at', 'updated_at']
+    protected $guarded = ['created_at', 'updated_at'];
     use HasFactory;
 }

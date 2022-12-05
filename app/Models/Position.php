@@ -9,8 +9,8 @@ class Position extends Model
 {
     protected $table = 'positions';
     //  役職id　
-        protected $fillable = ['position_name', 'author_id']
+        protected $fillable = ['position_name', 'author_id', 'delete_at'];
     
-        protected $guarded = ['created_at', 'updated_at']
+        protected $guarded = ['created_at', 'updated_at'];
     use HasFactory;
 }
