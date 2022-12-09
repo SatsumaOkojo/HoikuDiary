@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->mail = $request->mail;
         $user->password = $request->password;
-        $user->icon_image_path= $request->icon_image_path;
+        $user->icon_image_path = $request->icon_image_path;
         $user->delete_at = $request->delete_at;
         $user->save();
 

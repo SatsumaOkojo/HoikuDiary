@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->char('update_message');
             $table->timestamps();

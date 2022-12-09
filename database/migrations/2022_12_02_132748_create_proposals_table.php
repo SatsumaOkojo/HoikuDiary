@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('proposals', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('event_name');
             $table->date('schedule');
             $table->string('proposal_image_path');
