@@ -14,8 +14,9 @@ class NewsController extends Controller
 
     public function createNews(Request $request)
     {
-
+      
     }
+    
 
     public function getNews($id)
     {
