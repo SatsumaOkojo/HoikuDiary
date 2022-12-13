@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Facility;
+use App\Models\Facility;
 
 class FacilityController extends Controller
 {

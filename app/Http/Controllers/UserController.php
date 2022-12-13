@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     public function getAllUsers()
     {
-        $users = User::get()->toJson(JSON_PRETTY_PRINT);
-        return response($users, 200);
+         $users = User::get()->toJson(JSON_PRETTY_PRINT);
+         return response($users, 200); 
     }
 
     public function createUser(Request $request)

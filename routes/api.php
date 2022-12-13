@@ -2,7 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProposalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,34 +26,34 @@ use App\Http\Controllers\UserController;
 
 Route::post('/facilities/', [FacilityController::class, 'createFacility']);
 Route::get('/facilities/', [FacilityController::class, 'getAllFacilities']);
-Route::get('/facilities/', [FacilityController::class, 'getFacility']);
+Route::get('/facilities/{id}', [FacilityController::class, 'getFacility']);
 Route::put('/facilities/{id}', [FacilityController::class, 'updateFacility']);
 Route::delete('/facilities/{id}', [FacilityController::class, 'deleteFacility']);
 
 
-Route::post('/Positions/', [PositionController::class, 'createPosition']);
-Route::get('/Positions/', [PositionController::class, 'getAllPositions']);
-Route::get('/Positions/', [PositionController::class, 'getPosition']);
-Route::put('/Positions/{id}', [PositionController::class, 'updatePosition']);
-Route::delete('/Positions/{id}', [PositionController::class, 'deletePosition']);
+Route::post('/positions/', [PositionController::class, 'createPosition']);
+Route::get('/positions/', [PositionController::class, 'getAllPositions']);
+Route::get('/positions/{id}', [PositionController::class, 'getPosition']);
+Route::put('/positions/{id}', [PositionController::class, 'updatePosition']);
+Route::delete('/positions/{id}', [PositionController::class, 'deletePosition']);
 
 Route::post('/users/', [UserController::class, 'createUser']);
 Route::get('/users/', [UserController::class, 'getAllUsers']);
-Route::get('/users/', [UserController::class, 'getUser']);
+Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::put('/users/{id}', [UserController::class, 'updateUser']);
 Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 
-Route::post('/Messages/', [MessageController::class, 'createMessage']);
-Route::get('/Messages/', [MessageController::class, 'getAllMessages']);
-Route::get('/Messages/', [MessageController::class, 'getMessage']);
-Route::put('/Messages/{id}', [MessageController::class, 'updateMessage']);
-Route::delete('/Messages/{id}', [MessageController::class, 'deleteMessage']);
+Route::post('/messages/', [MessageController::class, 'createMessage']);
+Route::get('/messages/', [MessageController::class, 'getAllMessages']);
+Route::get('/messages/{id}', [MessageController::class, 'getMessage']);
+Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
+Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
 
-Route::post('/Proposals/', [ProposalController::class, 'createProposal']);
-Route::get('/Proposals/', [ProposalController::class, 'getAllProposals']);
-Route::get('/Proposals/', [ProposalController::class, 'getProposal']);
-Route::put('/Proposals/{id}', [ProposalController::class, 'updateProposal']);
-Route::delete('/Proposals/{id}', [ProposalController::class, 'deleteProposal']);
+Route::post('/proposals/', [ProposalController::class, 'createProposal']);
+Route::get('/proposals/', [ProposalController::class, 'getAllProposals']);
+Route::get('/proposals/{id}', [ProposalController::class, 'getProposal']);
+Route::put('/proposals/{id}', [ProposalController::class, 'updateProposal']);
+Route::delete('/proposals/{id}', [ProposalController::class, 'deleteProposal']);
 
 

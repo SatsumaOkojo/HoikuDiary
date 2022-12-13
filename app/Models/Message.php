@@ -13,4 +13,17 @@ class Message extends Model
     
         protected $guarded = ['created_at', 'updated_at'];
     use HasFactory;
+
+
+    
+public function facility()
+{
+    return $this->hasOne(Facility::class);
+}
+
+
+public function user()
+{
+    return $this->hasOne(User::class);
+}
 }

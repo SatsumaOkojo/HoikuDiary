@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Message;
+use App\Models\Message;
 
 class MessageController extends Controller
 {
@@ -43,7 +43,7 @@ class MessageController extends Controller
     {
         if (Message::where('id', $id)->exists()) {
             $message = Message::find($id);
-            $message->facility_id= is_null($request->facility_id) ? $message->facility_id : $request->facility_id;
+            $message->facility_id= is_null($request->facility_id) ? $message->facility_id : $request->facility_id; 
             $message->user_id= is_null($request->user_id) ? $message->user_id : $request->user_id;
             $message->message= is_null($request->message) ? $message->message : $request->message;
             $message->delete_at= is_null($request->delete_at) ? $message->delete_at : $request->delete_at;

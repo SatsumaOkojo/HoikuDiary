@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Position;
+use App\Models\Position;
 
 class PositionController extends Controller
 {
@@ -17,7 +17,7 @@ class PositionController extends Controller
     {
         $position = new Position;
         $position->position_name = $request->position_name;
-        $position->author_id = $request->author_id;
+        $position->author_id = $request->author_id; 
         $position->delete_at = $request->delete_at;
         $position->save();
 

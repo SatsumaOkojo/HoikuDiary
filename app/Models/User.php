@@ -9,9 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -53,10 +55,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-// 園テーブルと紐づけ？
-    public function facility()
-    {
-         return $this->belongsTo('App\Models\facility');
-    }
+
+public function facility()
+{
+    return $this->hasOne(Facility::class);
+}
+
+public function position()
+{
+    return $this->hasOne(Position::class);
+}
 }
 

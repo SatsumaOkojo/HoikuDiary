@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('event_name');
             $table->date('schedule');
             $table->string('proposal_image_path');

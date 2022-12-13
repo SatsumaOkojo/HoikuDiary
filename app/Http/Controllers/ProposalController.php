@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Proposal;
+use App\Models\Proposal;
 
 class ProposalController extends Controller
 {
@@ -16,6 +16,7 @@ class ProposalController extends Controller
     public function createProposal(Request $request)
     {
         $proposal = new Proposal;
+        $proposal->user_id = $request->user_id;
         $proposal->event_name = $request->event_name;
         $proposal->schedule = $request->schedule;
         $position->proposal_image_path = $request->proposal_image_path;
@@ -43,6 +44,7 @@ class ProposalController extends Controller
     {
         if (Proposal::where('id', $id)->exists()) {
             $proposal = Proposal::find($id);
+            $proposal->user_id = is_null($request->user_id) ? $proposal->user_id : $request->user_id;
             $proposal->event_name = is_null($request->event_name) ? $proposal->event_name : $request->event_name;
             $proposal->schedule = is_null($request->schedule) ? $proposal->schedule : $request->schedule;
             $proposal->proposal_image_path = is_null($request->proposal_image_path) ? $proposal->proposal_image_path : $request->proposal_image_path;
