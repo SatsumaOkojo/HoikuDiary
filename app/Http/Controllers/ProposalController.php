@@ -19,9 +19,9 @@ class ProposalController extends Controller
         $proposal->user_id = $request->user_id;
         $proposal->event_name = $request->event_name;
         $proposal->schedule = $request->schedule;
-        $position->proposal_image_path = $request->proposal_image_path;
+        $proposal->proposal_image_path = $request->proposal_image_path;
         $proposal->delete_at = $request->delete_at;
-        $position->save();
+        $proposal->save();
 
         return response()->json([
             "message" => "proposal recode created"
