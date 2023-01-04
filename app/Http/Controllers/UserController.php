@@ -57,7 +57,7 @@ class UserController extends Controller
             $user->delete_at = is_null($request->delete_at) ? $user->delete_at : $request->delete_at;
             $user->save();
 
-            
+                  
             return response()->json([
                 "message" => "records updated successfully"
             ], 200);
