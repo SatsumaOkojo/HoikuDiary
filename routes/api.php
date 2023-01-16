@@ -7,7 +7,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProposalController;
-use App\Http\Controllers\Api\MeController;
+
 
 
 /*
@@ -24,14 +24,8 @@ use App\Http\Controllers\Api\MeController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/me', MeController::class);
-});
 
 Route::post('/facilities/', [FacilityController::class, 'createFacility']);
 Route::get('/facilities/', [FacilityController::class, 'getAllFacilities']);
@@ -48,8 +42,10 @@ Route::delete('/positions/{id}', [PositionController::class, 'deletePosition']);
 
 Route::post('/users/', [UserController::class, 'createUser']);
 Route::get('/users/', [UserController::class, 'getAllUsers']);
-Route::get('/users/', [UserController::class, 'loginCheck']);
-Route::get('/users/{id}', [UserController::class, 'getUser']);
+
+Route::get('/users/{id}', [UserController::class, 'loginUser']);
+
+// Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::put('/users/{id}', [UserController::class, 'updateUser']);
 Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
