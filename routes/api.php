@@ -43,7 +43,7 @@ Route::delete('/positions/{id}', [PositionController::class, 'deletePosition']);
 Route::post('/users/', [UserController::class, 'createUser']);
 Route::get('/users/', [UserController::class, 'getAllUsers']);
 
-Route::get('/users/{id}', [UserController::class, 'loginUser']);
+Route::post('/users/login/', [UserController::class, 'loginCheck']);
 
 // Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::put('/users/{id}', [UserController::class, 'updateUser']);
