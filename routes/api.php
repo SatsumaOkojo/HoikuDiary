@@ -55,6 +55,9 @@ Route::get('/messages/', [MessageController::class, 'getAllMessages']);
 Route::get('/messages/{id}', [MessageController::class, 'getMessage']);
 Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
 Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
+Route::get('/messages/items/', [MessageController::class, 'getMessagesItems']);
+
+
 
 Route::post('/proposals/', [ProposalController::class, 'createProposal']);
 Route::get('/proposals/', [ProposalController::class, 'getAllProposals']);
