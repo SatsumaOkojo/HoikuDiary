@@ -44,63 +44,73 @@ class UserController extends Controller
            }
    }
   
+
    public function loginCheck(Request $request){
     // メールアドレスチェック
     if(User::where('mail', $request->mail)->exists()){
 
       // パスワードチェック
       if(User::where('password', $request->password)->exists()){
-        return response()->json([
-          "message" => "ok"
-        ], 200);
+        $user = User::where('mail', $mail)->get()->toJson(JSON_PRETTY_PRINT);
+        return response($user, 200); 
       }else{
         return response()->json([
           "message" => "パスワードが間違っています"
+      
         ], 400); 
       }
       
     } else{
       return response()->json([
         "message" => "対象のユーザが存在しません"
+ 
       ], 400); 
     }
   }
 
 
+  //  public function loginCheck(Request $request){
+  //   // メールアドレスチェック
+  //   if(User::where('mail', $request->mail)->exists()){
 
+  //     // パスワードチェック
+  //     if(User::where('password', $request->password)->exists()){
+  //       return response()->json([
+  //         "message" => "ok"
+  //       ], 200);
+  //     }else{
+  //       return response()->json([
+  //         "message" => "パスワードが間違っています"
+      
+  //       ], 400); 
+  //     }
+      
+  //   } else{
+  //     return response()->json([
+  //       "message" => "対象のユーザが存在しません"
+ 
+  //     ], 400); 
+  //   }
+  // }
 
-// 自分で考えていた関数
-//    public function loginUser($mail)
-//    {
-//        if (User::where('mail', $mail)->exists()) {
-//            $user = User::where('mail', $mail)->get()->toJson(JSON_PRETTY_PRINT);
-//            return response($user, 200);
-//          } else {
-//            return response()->json([
-//              "message" => "User not found"
-//            ], 404);  
-//           }
-//   }
-  //  public function loginCheck(Request $request)
-  //  {
-  //    $credentials = $request->validate([
-  //      'email' => ['required', 'email'],
-  //      'password' => ['required'],
-  //    ]);
-     
-  //    if (Auth::attempt($credentials)) {
-  //      $request->session()->regenerate();
+  // public function loginCheck(Request $request){
+  //   // $user = new User;
+  //   $user = User::where('mail', $request->mail)->where('mail', $password->password);
 
-  //      return redirect()->intended('dashboard');
-  //  }
-
-  //  return back()->withErrors([
-  //      'email' => 'The provided credentials do not match our records.',
-  //  ]);
-  //  }
+  //     if ($user->exists()){
+  //       return response()->json([
+  //         "message" => "ok",
+  //         "user" => $user->get()->toJson(JSON_PRETTY_PRINT),
+  //       ], 200);
+  //     }else{
+  //       return response()->json([
+  //         "message" => "パスワードが間違っています",
+  //         "user" => null
+  //       ], 400); 
+  //     }
+  // }
 
    
-
     public function updateUser(Request $request, $id)
     {
         if (User::where('id', $id)->exists()) {
