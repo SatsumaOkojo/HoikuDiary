@@ -35,7 +35,7 @@ class UserController extends Controller
     public function getUser($id)
     {
         if (User::where('id', $id)->exists()) {
-            $user = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $user = User::where('id', $id)->get();
             return response($user, 200);
           } else {
             return response()->json([
@@ -51,64 +51,25 @@ class UserController extends Controller
 
       // パスワードチェック
       if(User::where('password', $request->password)->exists()){
-        $user = User::where('mail', $mail)->get()->toJson(JSON_PRETTY_PRINT);
-        return response($user, 200); 
+        $user = User::where('mail', $request->mail)->first();
+
+        return response()->json([
+          "payload" => ["user" => $user]
+        ], 200); 
+
       }else{
         return response()->json([
           "message" => "パスワードが間違っています"
-      
         ], 400); 
       }
       
     } else{
       return response()->json([
         "message" => "対象のユーザが存在しません"
- 
       ], 400); 
     }
   }
 
-
-  //  public function loginCheck(Request $request){
-  //   // メールアドレスチェック
-  //   if(User::where('mail', $request->mail)->exists()){
-
-  //     // パスワードチェック
-  //     if(User::where('password', $request->password)->exists()){
-  //       return response()->json([
-  //         "message" => "ok"
-  //       ], 200);
-  //     }else{
-  //       return response()->json([
-  //         "message" => "パスワードが間違っています"
-      
-  //       ], 400); 
-  //     }
-      
-  //   } else{
-  //     return response()->json([
-  //       "message" => "対象のユーザが存在しません"
- 
-  //     ], 400); 
-  //   }
-  // }
-
-  // public function loginCheck(Request $request){
-  //   // $user = new User;
-  //   $user = User::where('mail', $request->mail)->where('mail', $password->password);
-
-  //     if ($user->exists()){
-  //       return response()->json([
-  //         "message" => "ok",
-  //         "user" => $user->get()->toJson(JSON_PRETTY_PRINT),
-  //       ], 200);
-  //     }else{
-  //       return response()->json([
-  //         "message" => "パスワードが間違っています",
-  //         "user" => null
-  //       ], 400); 
-  //     }
-  // }
 
    
     public function updateUser(Request $request, $id)

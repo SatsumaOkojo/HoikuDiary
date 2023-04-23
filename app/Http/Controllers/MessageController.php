@@ -21,20 +21,20 @@ class MessageController extends Controller
     public function getMessagesItems($id)
     {
         $user = User::where('id', $id)->first();
-        // 引数のIDのUserを１つだけとってくる
+
 
         $facility_users= User::where('facility_id', $user->facility_id)->get();
-        // 上のUserのfacility_idが同じユーザー全部を持ってくる
+
 
         $mainpage_items = [];
     
         foreach($facility_users as $facility_user){
             
               $message = Message::where('user_id', $facility_user->id)->first();
-              // 対象のUserIDを持つメッセージを1つ表示
+        
       
               $position = Position::where('id',$facility_user->position_id)->first();
-              // 対象Userのposition_idをPositionテーブルから探す
+
               array_push($mainpage_items, [
                 "name" => $facility_user->name,
                 "position_name" => $position->position_name,
